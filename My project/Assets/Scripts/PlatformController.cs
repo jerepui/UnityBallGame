@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlatformController : MonoBehaviour {
 
+    [SerializeField] Transform platform = null;
     //The intensity of turning the platform makes when the corresponding keys are pressed.
     //public variable so it can be changed in the Unity Editor to test which value works best.
-    public float turnStrength;
+    [SerializeField] float turnStrength = 10.0f;
 
-    //TurnLimit prevents the platform from rotating too far in any direction.
-    public float turnLimit;
     
+    float tiltX = 0f;
+    float tiltZ = 0f;
+
 
 
 
@@ -23,33 +25,21 @@ public class PlatformController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        
+        UpdateRotation();
     }
 
-    private void FixedUpdate() {
+    void UpdateRotation() {
 
-        //Rotates the platform in different directions when the corresponding WASD keys are pressed.
-        //To make sure the platform keeps rotating in the chosen direction more than once, the current rotation of each axis is included in the calculation.
-        //The platform turns only when the correct key is pressed and the platform hasn't already rotated over the turn limit.
+        Vector2 rotDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        rotDir.Normalize();
 
-       if(Input.GetKey(KeyCode.W) && transform.rotation.x < turnLimit) {
+        tiltX += rotDir.x * turnStrength;
+        tiltX = Mathf.Clamp(tiltX, -40.0f, 40.0f);
 
-            transform.Rotate(transform.rotation.x + 0.05f * turnStrength, 0, 0);
-        }
+        tiltZ += rotDir.y * turnStrength;
+        tiltZ = Mathf.Clamp(tiltZ, -40.0f, 40.0f);
 
-       if(Input.GetKey(KeyCode.S) && transform.rotation.x > turnLimit * -1f) {
+        platform.localEulerAngles = Vector3.right * tiltX + Vector3.forward * tiltZ;
 
-            transform.Rotate(transform.rotation.x - 0.05f * turnStrength, 0,0 );
-        }
-
-       if(Input.GetKey(KeyCode.A) && transform.rotation.z < turnLimit) {
-
-            transform.Rotate(0, 0, transform.rotation.z + 0.05f * turnStrength);
-        }
-
-        if (Input.GetKey(KeyCode.D) && transform.rotation.z > turnLimit * -1f) {
-
-            transform.Rotate(0, 0, transform.rotation.z - 0.05f * turnStrength);
-        }
     }
 }

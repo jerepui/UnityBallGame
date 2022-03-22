@@ -247,7 +247,6 @@ GameObject:
   - component: {fileID: 338137271}
   - component: {fileID: 338137270}
   - component: {fileID: 338137269}
-  - component: {fileID: 338137272}
   - component: {fileID: 338137273}
   m_Layer: 0
   m_Name: Platform
@@ -265,7 +264,7 @@ Transform:
   m_GameObject: {fileID: 338137267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.78, z: 0}
-  m_LocalScale: {x: 15, y: 0.1258, z: 15}
+  m_LocalScale: {x: 15, y: 0.28746554, z: 15}
   m_Children: []
   m_Father: {fileID: 1441735589}
   m_RootOrder: 0
@@ -332,20 +331,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338137267}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &338137272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338137267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 794b73516e45a014899e659c679478b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnStrength: 30
-  turnLimit: 0.2
 --- !u!54 &338137273
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -531,13 +516,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.1913143, y: -0, z: -0, w: 0.9815288}
-  m_LocalPosition: {x: 0, y: 10.15, z: -12.857}
+  m_LocalRotation: {x: 0.15304591, y: -0.6903456, z: 0.15304591, w: 0.6903456}
+  m_LocalPosition: {x: 14.12, y: 12.5, z: -0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 22.059, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 25, y: -90, z: 0}
 --- !u!1 &1441735588
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1441735589}
+  - component: {fileID: 1441735590}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -570,3 +556,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1441735590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441735588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794b73516e45a014899e659c679478b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 338137268}
+  turnStrength: 0.25
